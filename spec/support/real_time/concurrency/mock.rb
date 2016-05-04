@@ -11,6 +11,7 @@ module Slack
 
           def start_async(client)
             reactor = Thread.new {}
+            @url = client.init!
             client.run_loop
             reactor
           end

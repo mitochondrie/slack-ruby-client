@@ -7,8 +7,7 @@ module Slack
       attr_reader :logger
       protected :logger
 
-      def initialize(url, options = {})
-        @url = url
+      def initialize(options = {})
         @options = options
         @driver = nil
         @logger = options.delete(:logger) || Slack::RealTime::Config.logger || Slack::Config.logger

@@ -1,5 +1,6 @@
 ### 0.7.2 (Next)
 
+* [#87](https://github.com/dblock/slack-ruby-client/issues/87): The `rtm.start` part of setting up a RealTime client will happen asynchronously with `start_async` - [@dblock](https://github.com/dblock).
 * [#84](https://github.com/dblock/slack-ruby-client/issues/84): Fix: Celluloid concurrency doesn't parallelize the connection setup - [@dblock](https://github.com/dblock).
 * Your contribution here.
 

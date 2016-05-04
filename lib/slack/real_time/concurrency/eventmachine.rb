@@ -29,6 +29,7 @@ module Slack
           def start_async(client)
             thread = ensure_reactor_running
 
+            @url = client.init!
             client.run_loop
 
             thread

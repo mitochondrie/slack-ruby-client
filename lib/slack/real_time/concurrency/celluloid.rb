@@ -55,6 +55,7 @@ module Slack
           end
 
           def run_client_loop
+            @url = @client.init!
             @client.run_loop
           end
 

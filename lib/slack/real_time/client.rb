@@ -78,6 +78,14 @@ module Slack
         end
       end
 
+      # @return [String] WebSocket URL
+      def init!
+        start = web_client.rtm_start(start_options)
+        data = Slack::Messages::Message.new(start)
+        @store = @store_class.new(data) if @store_class
+        data.url
+      end
+
       def run_loop
         @socket.connect! do |driver|
           @callback.call(driver) if @callback
@@ -107,11 +115,7 @@ module Slack
       # @return [Slack::RealTime::Socket]
       def build_socket
         fail ClientAlreadyStartedError if started?
-        start = web_client.rtm_start(start_options)
-        data = Slack::Messages::Message.new(start)
-        @url = data.url
-        @store = @store_class.new(data) if @store_class
-        socket_class.new(@url, socket_options)
+        socket_class.new(socket_options)
       end
 
       def socket_options

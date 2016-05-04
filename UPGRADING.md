@@ -1,6 +1,14 @@
 Upgrading Slack-Ruby-Client
 ===========================
 
+### Upgrading to >= 0.7.2
+
+#### Changes in Slack::RealTime::Client#start_async
+
+The retrieval of the WebSocket URL in `Slack::RealTime::Client#start_async` was synchronous, enabling handling connection failures, deactivated clients and such. This is no longer the case, and the operation is now perfored asynchronously.
+
+See [#87](https://github.com/dblock/slack-ruby-client/issues/87) for more information.
+
 ### Upgrading to >= 0.6.0
 
 #### Changes to API Response Data
