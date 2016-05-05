@@ -4,3 +4,4 @@ gem 'slack-ruby-client', path: '../..'
 
 gem 'faye-websocket'
 gem 'foreman'
+gem 'em-http-request'

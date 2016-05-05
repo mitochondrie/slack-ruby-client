@@ -21,7 +21,11 @@ module Slack
             connection.use ::FaradayMiddleware::ParseJson
             connection.use ::Faraday::Response::RaiseError
             connection.response :logger, logger if logger
-            connection.adapter ::Faraday.default_adapter
+            if ::Faraday::Adapter::EMHttp.loaded?
+              connection.adapter :em_http
+            else
+              connection.adapter ::Faraday.default_adapter
+            end
           end
         end
       end
